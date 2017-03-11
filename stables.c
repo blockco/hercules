@@ -25,17 +25,18 @@ void	allocate_loads_of_memory(void) {
   int_pointer_powa = (int*)malloc(sizeof(int) * 4242);
   pointer_powa = (char*)malloc(sizeof(char*) * 42);
   another_pointer = (int*)malloc(sizeof(int) * 424242);
+  if (!int_pointer_powa || !another_pointer || !pointer_powa)
+  {
+	free (int_pointer_powa);
+	free (pointer_powa);
+	free (another_pointer);
+	exit(1);
+  }
+
   bzero(int_pointer_powa, sizeof(int) * 4242);
   bzero(pointer_powa, sizeof(char*) * 42);
   bzero(another_pointer, sizeof(int) * 424242);
 
-  if (!int_pointer_powa || !another_pointer || !pointer_powa)
-  {
-      free (int_pointer_powa);
-      free (pointer_powa);
-      free (another_pointer);
-      exit(1);
-  }
   memset(pointer_powa, 42, 42);
   memset(int_pointer_powa, 42, 4242);
   while(index < 424242) {
